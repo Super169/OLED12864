@@ -39,8 +39,8 @@ void OLED12864::scrollLine(uint8_t direction, uint8_t lines)
     case OLED_SCROLL_UP:
       // Only handle line scroll at this moment
       offset = lines * OLED_WIDTH;
-      for (int i = 0; i < BUFFER_SIZE - offset; i++) _buffer[i] = _buffer[i + offset];
-      for (int i = BUFFER_SIZE - offset; i < BUFFER_SIZE; i++) _buffer[i] = 0x00;
+      for (int i = 0; i < OLED_BUFFER_SIZE - offset; i++) _buffer[i] = _buffer[i + offset];
+      for (int i = OLED_BUFFER_SIZE - offset; i < OLED_BUFFER_SIZE; i++) _buffer[i] = 0x00;
         show();
       break;
     default:
@@ -60,7 +60,7 @@ uint8_t OLED12864::drawBuffer(uint16_t bPos, uint8_t bits, uint8_t mode, uint8_t
 {
   if (!_enableBuffer) return 0;
 
-  if ((bPos < 0) || (bPos >= BUFFER_SIZE)) return 0;
+  if ((bPos < 0) || (bPos >= OLED_BUFFER_SIZE)) return 0;
 
   switch (mode) 
   {

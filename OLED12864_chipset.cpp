@@ -30,7 +30,7 @@ void OLED12864::initialization(uint8_t chipset, boolean enableBuffer, boolean di
 	_chipset = chipset;
 	_i2c = true;
 	_i2cAddress = DEFAULT_I2C_ADDRESS;
-	if (enableBuffer) _buffer = (uint8_t *) malloc(BUFFER_SIZE);
+	if (enableBuffer) _buffer = (uint8_t *) malloc(OLED_BUFFER_SIZE);
 	if (!_buffer) _enableBuffer = false;
 	else _enableBuffer = true;
 
@@ -250,7 +250,7 @@ void OLED12864::clr()
 	if (_inverseMode) fillData = 0xFF;
 	_cursor.x = 0;
 	_cursor.y = 0;
-	if (_enableBuffer) fillBuffer(fillData, 0, BUFFER_SIZE - 1); 
+	if (_enableBuffer) fillBuffer(fillData, 0, OLED_BUFFER_SIZE - 1); 
 	if (_directDraw)
 	{
 		if (_i2c)
@@ -284,7 +284,7 @@ void OLED12864::clr()
 					sendCommand(OLED_CMD_LOWCOLUMN | _colOffset );  	// low col = 0
 					sendCommand(OLED_CMD_HIGHCOLUMN );  							// hi col = 0
 
-					for (uint16_t i = 0; i < BUFFER_SIZE; i += 8) 
+					for (uint16_t i = 0; i < OLED_BUFFER_SIZE; i += 8) 
 					{
 						Wire.beginTransmission(_i2cAddress);
 						Wire.write(0x40);
@@ -387,7 +387,7 @@ void OLED12864::show()
 				sendCommand(OLED_CMD_HIGHCOLUMN );  							// hi col = 0
 
 				// Write 8 bytes for each transmission
-				for (uint16_t i = 0; i < BUFFER_SIZE; i += 8) 
+				for (uint16_t i = 0; i < OLED_BUFFER_SIZE; i += 8) 
 				{
 				
 

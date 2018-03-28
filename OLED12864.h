@@ -16,7 +16,7 @@
 
 // #define _OLED12864_DEBUG_
 
-#define BUFFER_SIZE 1024
+#define OLED_BUFFER_SIZE 1024
 
 
 
