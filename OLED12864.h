@@ -49,6 +49,7 @@ static	uint8_t  _invalidChar = 0x00;
 #define OLED_CMD_DISPLAYON			0xAF
 #define OLED_CMD_DISPLAYOFF			0xAE
 
+/*
 //  Display Byte
 //    0    E.g. D3 ->    1 \
 //    1                  1  \ = 3 (0011)
@@ -58,6 +59,7 @@ static	uint8_t  _invalidChar = 0x00;
 //    5                  0  \ = D (1101)
 //    6                  1  /
 //    7                  1 /
+*/
 
 #define OLED_CMD_LOWCOLUMN   	0x00  // 0x00 - 0x0F
 #define OLED_CMD_HIGHCOLUMN  	0x10  // 0x10 - 0x17
